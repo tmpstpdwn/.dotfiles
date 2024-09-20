@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/srykrnm/Pictures/Wallpapers/wp3757235-street-night-wallpapers.jpg"
+let background = "#0B0607"
+let foreground = "#ecc694"
+let cursor     = "#ecc694"
+
+" Colors
+let color0  = "#0B0607"
+let color1  = "#883706"
+let color2  = "#8C3B20"
+let color3  = "#92480A"
+let color4  = "#AD5A11"
+let color5  = "#CC711A"
+let color6  = "#AD6C4A"
+let color7  = "#ecc694"
+let color8  = "#a58a67"
+let color9  = "#883706"
+let color10 = "#8C3B20"
+let color11 = "#92480A"
+let color12 = "#AD5A11"
+let color13 = "#CC711A"
+let color14 = "#AD6C4A"
+let color15 = "#ecc694"

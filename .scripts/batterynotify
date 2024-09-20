@@ -1,0 +1,22 @@
+#!/bin/bash
+
+ 
+ttf2png -f "MononokiNerdFont-Bold" -c "#006600" -g "󱊣" -p "/tmp/battery_full"
+ttf2png -f "MononokiNerdFont-Bold" -c "#ff0000" -g "󱊡" -p "/tmp/battery_low"
+ttf2png -f "MononokiNerdFont-Bold" -c "#006600" -g "󱊥" -p "/tmp/battery_charging"
+
+sleep 5
+
+while true
+do
+	battery_level=`acpi -b | grep -P -o '[0-9]+(?=%)'`
+	battery_state=`acpi | awk '{print $3}'`
+	if [ "$battery_state" == Discharging, ]  && [ $battery_level -le 20  ]; then	
+        dunstify "Battery Low!" "$battery_level"% -u critical -r 69 -i /tmp/battery_low.png -h string:frcolor:#646464
+	elif [ "$battery_state" == Not ]; then
+		dunstify "Charger connected" "$battery_level"% -u low -r 69 -i /tmp/battery_charging.png -h string:frcolor:#646464
+	elif [ "$battery_state" == Full, ]; then
+		dunstify "Battery Full" "$battery_level"% -u normal -r 69 -i /tmp/battery_full.png -h string:frcolor:#646464
+	fi
+done
+

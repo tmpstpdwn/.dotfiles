@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    	echo "Usage: $0 <file_path>"
+    	exit 1
+fi
+
+file_path=$(realpath "$1")
+mime_type=$(file --mime-type -b "$file_path")
+
+case "$mime_type" in
+	text/html)
+	    	$BROWSER "$file_path";;
+	text/*)
+	    	$TERMINAL $TEXT_EDITOR "$file_path";;
+	image/*)
+	    	$IMAGE_VIEWER "$file_path";;
+    	application/pdf)
+	    	$PDF_VIEWER "$file_path";;
+    	audio/*)
+        	$AUDIO_VIDEO "$file_path";;
+    	video/*)
+        	$AUDIO_VIDEO "$file_path";;
+	application/vnd.microsoft.portable-executable)
+		wine "$file_path";;
+    	*)
+        	echo "No preferred application found for $mime_type files.";;
+esac

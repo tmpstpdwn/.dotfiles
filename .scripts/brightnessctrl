@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+
+ttf2png -f "MononokiNerdFont-Bold" -g "󰖨 " -p "/tmp/brightness"
+
+
+case $1 in
+    binc)
+		brightnessctl s 5%+
+		br=`brightnessctl | grep '%' | awk '{print $4}' | sed 's/(//g' | sed 's/)//g'`
+		dunstify "Brightness" "$br" -u low -r 1234 -i /tmp/brightness.png
+		;;
+	bdec)
+		brightnessctl s 5%-
+		br=`brightnessctl | grep '%' | awk '{print $4}' | sed 's/(//g' | sed 's/)//g'`
+		dunstify "Brightness" "$br" -u low -r 1234 -i /tmp/brightness.png
+		;;
+esac

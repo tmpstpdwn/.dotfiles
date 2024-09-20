@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# Get colors from shwal cache
+source ~/.cache/shwal/colors.sh
+
+### ZATHURA ###
+
+ZATHURARC="$HOME/.config/zathura/zathurarc"
+
+if [ ! -f "$ZATHURARC" ]; then
+    touch "$ZATHURARC"
+fi
+
+cat <<CONF > "$ZATHURARC"
+set recolor "true"
+set completion-bg "$background"
+set completion-fg "$foreground"
+set completion-group-bg "$background"
+set completion-group-fg "$color2"
+set completion-highlight-bg "$foreground"
+set completion-highlight-fg "$background"
+set recolor-lightcolor "$background"
+set recolor-darkcolor "$foreground"
+set default-bg "$background"
+set inputbar-bg "$background"
+set inputbar-fg "$foreground"
+set notification-bg "$background"
+set notification-fg "$foreground"
+set notification-error-bg "$color1"
+set notification-error-fg "$foreground"
+set notification-warning-bg "$color1"
+set notification-warning-fg "$foreground"
+set statusbar-bg "$background"
+set statusbar-fg "$foreground"
+set index-bg "$background"
+set index-fg "$foreground"
+set index-active-bg "$foreground"
+set index-active-fg "$background"
+set render-loading-bg "$background"
+set render-loading-fg "$foreground"
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+CONF
+
+### DUNST ###
+
+DUNST_CONFIG="$HOME/.config/dunst/dunstrc"
+
+killall dunst
+
+sed -i "s/background = .*/background = \"$background\"/" $DUNST_CONFIG
+sed -i "s/foreground = .*/foreground = \"$foreground\"/" $DUNST_CONFIG
+sed -i "s/frame_color = .*/frame_color = \"$color1\"/" $DUNST_CONFIG
+
+dunst&
+
+### POLYBAR ###
+
+POLY_CONFIG="$HOME/.config/polybar/config.ini"
+
+sed -i "s/^background = .*/background = \"$background\"/" $POLY_CONFIG
+sed -i "s/^foreground = .*/foreground = \"$foreground\"/" $POLY_CONFIG
+sed -i "s/^foreground-alt = .*/foreground-alt = \"$color7\"/" $POLY_CONFIG
+sed -i "s/^primary = .*/primary = \"$color1\"/" $POLY_CONFIG
+sed -i "s/^secondary = .*/secondary = \"$color2\"/" $POLY_CONFIG
+sed -i "s/^alert = .*/alert = \"$color3\"/" $POLY_CONFIG
+sed -i "s/^border-bottom-color = .*/border-bottom-color = \"$color2\"/" $POLY_CONFIG
+
+polybar-msg cmd restart
+
+### XMONAD ###
+
+xmonad_file="$HOME/.config/xmonad/xmonad.hs"
+
+sed -i "s/^myNormalBorderColor = \"#[0-9A-Fa-f]\{6\}\"/myNormalBorderColor = \"$color2\"/g" "$xmonad_file"
+sed -i "s/^myFocusedBorderColor = \"#[0-9A-Fa-f]\{6\}\"/myFocusedBorderColor = \"$foreground\"/g" "$xmonad_file"
+
+xmonad --recompile
+xmonad --restart
+
+### END ###

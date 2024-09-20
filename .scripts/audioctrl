@@ -1,0 +1,35 @@
+#!/bin/bash
+
+
+ttf2png -f "MononokiNerdFont-Bold" -g "" -p "/tmp/sound"
+ttf2png -f "MononokiNerdFont-Bold" -g "" -p "/tmp/mute"
+
+case $1 in
+	ainc)
+	  	pamixer -i 5
+	    	s=`pamixer --get-volume-human`
+		if [ "$s" == muted ]; then
+			dunstify "Audio" "Mute" -u low -r 6969 -i /tmp/mute.png
+		else 
+			dunstify "Audio" "$s" -u low -r 6969 -i /tmp/sound.png
+		fi 
+		;;
+	adec)
+		pamixer -d 5
+		s=`pamixer --get-volume-human`
+		if [ "$s" == muted ]; then
+		       	dunstify "Audio" "Mute" -u low -r 6969 -i /tmp/mute.png
+		else
+	      		dunstify "Audio" "$s" -u low -r 6969 -i /tmp/sound.png
+      		fi 
+		;;
+	atogg)
+		pamixer -t
+		s=`pamixer --get-volume-human`
+		if [ "$s" == muted ]; then
+			dunstify "Audio" "Mute" -u low -r 6969 -i /tmp/mute.png
+		else
+			dunstify "Audio" "$s" -u low -r 6969 -i /tmp/sound.png
+		fi
+		;; 
+esac	

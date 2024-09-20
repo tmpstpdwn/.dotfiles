@@ -1,0 +1,8 @@
+#!/bin/bash
+
+shwal -r
+dunst&
+polybar&
+#picom&
+#batterynotify&
+

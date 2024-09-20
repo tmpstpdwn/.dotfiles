@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+# Current Theme
+rofi_theme="$HOME/.config/rofi/quickinfo/config.rasi"
+
+# CMDs
+uptime="`uptime -p | sed -e 's/up //g'`"
+user="$USER"
+
+# Options
+user="󰀄 User"
+date="󰃵 Date"
+time="󱑇 Time"
+volume=" Volume"
+brightness="󰖨 Brightness"
+battery="󱊣 Battery"
+uptime="󰄿 Uptime"
+wifi="󰖩 Wifi"
+ethernet="󰚥 Ethernet"
+kernal=" Kernal Ver"
+packages=" Package counts"
+
+# Menu command based on $MENU variable
+menu_cmd() {
+    if [[ "$MENU" == "dmenu" ]]; then
+        dmenu_shwal -p "Quickinfo:" -i
+    else
+        rofi -dmenu -theme $rofi_theme -i
+    fi
+}
+
+# Pass variables to menu
+run_menu() {
+    echo -e "$user\n$date\n$time\n$volume\n$brightness\n$battery\n$uptime\n$wifi\n$ethernet\n$kernal\n$packages" | menu_cmd
+}
+
+# Actions
+chosen="$(run_menu)"
+glyph="$(echo $chosen | awk '{print $1}')"
+ttf2png -f "MononokiNerdFont-Bold" -g "$glyph" -p "/tmp/sysinforofi"
+icon_path="/tmp/sysinforofi.png"
+
+case ${chosen} in
+    $user)
+        dunstify "User" "$USER" -u low -r 4209 -i "$icon_path"
+        ;;
+    $date)
+        dunstify "Date" "$(sysinfo -d)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $time)
+        dunstify "Time" "$(sysinfo -t)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $volume)
+        dunstify "Volume" "$(sysinfo -v)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $brightness)
+        dunstify "Brightness" "$(sysinfo -l)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $battery)
+        dunstify "Battery" "$(sysinfo -b)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $uptime)
+        dunstify "Uptime" "$(sysinfo -u)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $wifi)
+        dunstify "Wifi" "$(sysinfo -w)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $ethernet)
+        dunstify "Ethernet" "$(sysinfo -e)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $kernal)
+        dunstify "Kernal" "$(sysinfo -k)" -u low -r 4209 -i "$icon_path"
+        ;;
+    $packages)
+        dunstify "Package count" "$(sysinfo -p)" -u low -r 4209 -i "$icon_path"
+        ;;
+esac
