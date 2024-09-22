@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# Current Theme
-rofi_theme="$HOME/.config/rofi/quickinfo/config.rasi"
-
-# CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
-user="$USER"
-
 # Options
 user="󰀄 User"
 date="󰃵 Date"
@@ -22,11 +15,7 @@ packages=" Package counts"
 
 # Menu command based on $MENU variable
 menu_cmd() {
-    if [[ "$MENU" == "dmenu" ]]; then
-        dmenu_shwal -p "Quickinfo:" -i
-    else
-        rofi -dmenu -theme $rofi_theme -i
-    fi
+    dm-shwal -p "Quickinfo:" -i
 }
 
 # Pass variables to menu
@@ -37,8 +26,8 @@ run_menu() {
 # Actions
 chosen="$(run_menu)"
 glyph="$(echo $chosen | awk '{print $1}')"
-ttf2png -f "MononokiNerdFont-Bold" -g "$glyph" -p "/tmp/sysinforofi"
-icon_path="/tmp/sysinforofi.png"
+ttf2png -f "MononokiNerdFont-Bold" -g "$glyph" -p "/tmp/quickinfo"
+icon_path="/tmp/quickinfo.png"
 
 case ${chosen} in
     $user)

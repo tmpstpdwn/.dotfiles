@@ -2,7 +2,7 @@
 
 # Define your terminal and other programs
 set $mod Mod4
-set $terminal st
+set $terminal alacritty
 set $launcher launcher
 set $quickinfo quickinfo
 set $powermenu powermenu

@@ -1,9 +1,3 @@
 #!/bin/bash
 
-rofi_theme="$HOME/.config/rofi/launchers/config.rasi"
-
-if [[ "$MENU" == "dmenu" ]]; then
-    `dmenu_path | dmenu_shwal -p "Apps:"`
-else
-    rofi -show drun -theme $rofi_theme -i
-fi
+`dmenu_path | dm-shwal -p "Apps:"`

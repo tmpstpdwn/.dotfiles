@@ -32,6 +32,6 @@ export TEXT_EDITOR="nvim"
 export IMAGE_VIEWER="nsxiv"
 export PDF_VIEWER="zathura"
 export AUDIO_VIDEO="mpv"
-export TERMINAL="st -e"
+export TERMINAL="alacritty -e"
 
 ### END ###
