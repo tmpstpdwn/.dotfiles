@@ -16,7 +16,7 @@ alias xclipc='xclip -selection clipboard'
 alias xclipp='xclip -o'
 alias v='nvim'
 alias dmenu='dmenu_shwal'
-alias dotfiles='/usr/bin/git --git-dir=/home/srykrnm/.dotfiles/ --work-tree=/home/srykrnm'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ### PROMPTS ###
 
