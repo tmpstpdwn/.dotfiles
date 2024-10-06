@@ -8,12 +8,13 @@
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.scripts:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 ### DEFAULT APPS ###
 
 export MANPAGER="bat"
-export BROWSER="brave"
-export TEXT_EDITOR="nvim"
+export BROWSER="firefox"
+export TEXT_EDITOR="vim"
 export IMAGE_VIEWER="nsxiv"
 export PDF_VIEWER="zathura"
 export AUDIO_VIDIO="mvp"

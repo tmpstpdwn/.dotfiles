@@ -34,8 +34,8 @@ myClickJustFocuses = False
 myBorderWidth   = 2
 myModMask       = mod4Mask
 myWorkspaces    = ["www","ter","cht","mus","oth"]
-myNormalBorderColor = "#5D2D2D"
-myFocusedBorderColor = "#B44740"
+myNormalBorderColor = "#4F080A"
+myFocusedBorderColor = "#D12E1A"
 
 --------------------------------------------------------------------------
 -- [ User Defined Functions ]

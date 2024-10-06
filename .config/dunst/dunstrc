@@ -38,7 +38,7 @@
     horizontal_padding = 8
     text_icon_padding = 10
     frame_width = 2
-    frame_color = "#282828"
+    frame_color = "#2E0406"
     gap_size = 5
     separator_color = frame
     sort = yes
@@ -101,19 +101,19 @@
 
 # Set Dunst colors
 [urgency_low]
-    background = "#1B2627"
-    foreground = "#B44740"
-    frame_color = "#282828"
+    background = "#070102"
+    foreground = "#D12E1A"
+    frame_color = "#2E0406"
 
 [normal]
-    background = "#1B2627"
-    foreground = "#B44740"
-    frame_color = "#282828"
+    background = "#070102"
+    foreground = "#D12E1A"
+    frame_color = "#2E0406"
 
 [urgency_critical]
-    background = "#1B2627"
-    foreground = "#B44740"
-    frame_color = "#282828"
+    background = "#070102"
+    foreground = "#D12E1A"
+    frame_color = "#2E0406"
 
 # vim: ft=cfg
 

@@ -14,7 +14,7 @@ alias cat='bat'
 alias lf='lf-ub'
 alias xclipc='xclip -selection clipboard'
 alias xclipp='xclip -o'
-alias v='nvim'
+alias v='vim'
 alias dmenu='dmenu_shwal'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
@@ -27,7 +27,7 @@ PS1="[  ] ${GREEN}\W ${RESET}> "
 ### EXPORTS ###
 
 export MANPAGER="bat"
-export BROWSER="brave"
+export BROWSER="firefox"
 export TEXT_EDITOR="nvim"
 export IMAGE_VIEWER="nsxiv"
 export PDF_VIEWER="zathura"
