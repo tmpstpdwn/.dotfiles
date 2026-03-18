@@ -1,0 +1,171 @@
+/* Gruvbox Dark Colors */
+@define-color background #282828;
+@define-color background2 #665c54;
+@define-color background-light #3c3836;
+@define-color foreground #ebdbb2;
+@define-color black #32302f;
+@define-color red #cc241d;
+@define-color green #98971a;
+@define-color yellow #d79921;
+@define-color blue #458588;
+@define-color magenta #b16286;
+@define-color cyan #689d6a;
+@define-color white #fbf1f7;
+@define-color orange #d65d0e;
+
+/* Module-specific colors */
+@define-color workspaces-focused-bg @orange;
+@define-color workspaces-focused-fg @white;
+@define-color workspaces-unfocused-fg @foreground;
+@define-color workspaces-unfocused-bg @green;
+@define-color workspaces-urgent-bg @red;
+@define-color workspaces-urgent-fg @black;
+
+/* Text and border colors for modules */
+@define-color mode-color @orange;
+@define-color clock-color @blue;
+@define-color date-color @orange;
+@define-color battery-color @cyan;
+@define-color battery-charging-color @green;
+@define-color battery-warning-color @yellow;
+@define-color battery-critical-color @red;
+@define-color network-color @magenta;
+@define-color network-disconnected-color @red;
+@define-color pulseaudio-color @orange;
+@define-color pulseaudio-muted-color @red;
+@define-color backlight-color @yellow;
+@define-color uptime-color @blue;
+@define-color idle-inhibitor-color @foreground;
+@define-color idle-inhibitor-active-color @red;
+@define-color username-color @green; 
+
+* {
+    /* Base styling for all modules */
+    border: none;
+    border-radius: 0;
+    font-family: "SauceCodePro Nerd Font";
+    font-size: 11px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @background; 
+    border-bottom: 2px solid @background2;
+}
+
+/* Common module styling with border-bottom */
+#mode, #clock, #clock.date, #battery, #network, #pulseaudio,
+#backlight, #custom-uptime,
+#idle_inhibitor, #custom-username {
+    padding: 0 5px;
+    margin: 0 1px;
+    border-bottom: 2px solid transparent;
+    background-color: transparent;
+
+}
+
+/* Workspaces styling */
+#workspaces button {
+    padding: 0 5px;
+    margin: 0 1px;
+    background: transparent;
+    color: @workspaces-unfocused-fg;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid @workspaces-unfocused-bg;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: normal;
+    transition: none;
+    animation: none;
+}
+
+#workspaces button.focused {
+    color: @workspaces-focused-fg;
+    border-bottom-color: @workspaces-focused-bg;
+    background: @background-light;
+}
+
+#workspaces button.urgent {
+    border-bottom-color: @workspaces-urgent-bg;
+}
+
+/* Module-specific styling */
+#mode {
+    color: @mode-color;
+    border-bottom-color: @mode-color;
+}
+
+#clock {
+    color: @clock-color;
+    border-bottom-color: @clock-color;
+}
+
+#clock.date {
+    color: @date-color;
+    border-bottom-color: @date-color;
+}
+
+#battery {
+    color: @battery-color;
+    border-bottom-color: @battery-color;
+}
+
+#battery.charging, #battery.plugged {
+    color: @battery-charging-color;
+    border-bottom-color: @battery-charging-color;
+}
+
+#battery.warning:not(.charging) {
+    color: @battery-warning-color;
+    border-bottom-color: @battery-warning-color;
+}
+
+#battery.critical:not(.charging) {
+    color: @battery-critical-color;
+    border-bottom-color: @battery-critical-color;
+}
+
+#network {
+    color: @network-color;
+    border-bottom-color: @network-color;
+}
+
+#network.disconnected {
+    color: @network-disconnected-color;
+    border-bottom-color: @network-disconnected-color;
+}
+
+#pulseaudio {
+    color: @pulseaudio-color;
+    border-bottom-color: @pulseaudio-color;
+}
+
+#pulseaudio.muted {
+    color: @pulseaudio-muted-color;
+    border-bottom-color: @pulseaudio-muted-color;
+}
+
+#backlight {
+    color: @backlight-color;
+    border-bottom-color: @backlight-color;
+}
+
+#custom-uptime {
+    color: @uptime-color;
+    border-bottom-color: @uptime-color;
+}
+
+#custom-username {
+    color: @username-color;
+    border-bottom-color: @username-color;
+}
+
+#idle_inhibitor {
+    color: @idle-inhibitor-color;
+    border-bottom-color: @idle-inhibitor-color;
+}
+
+#idle_inhibitor.activated {
+    color: @idle-inhibitor-active-color;
+    border-bottom-color: @idle-inhibitor-active-color;
+}
