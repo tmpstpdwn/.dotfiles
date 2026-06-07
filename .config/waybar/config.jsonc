@@ -1,100 +1,98 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 20,
-    "spacing": 0,
+    "height": 30,
     "margin": 0,
-    "modules-left": ["sway/workspaces", "sway/mode"],
-        "modules-center": [],
-    "modules-right": ["network", "custom/uptime", "pulseaudio", "backlight", "battery", "clock#date", "clock", "custom/username"],
+    "exclusive": true,
 
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "network",
+        "custom/uptime",
+        "wireplumber",
+        "backlight",
+        "battery",
+        "clock#date",
+        "clock#time",
+        "custom/user"
+    ],
 
     "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": false,
         "format": "{name}",
+        "disable-scroll": true,
         "disable-click": true,
+        "all-outputs": false,
+        "numeric-first": true
+    },
+
+    "sway/mode": {
+        "format": "{}",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi":        "󰤨 {essid}",
+        "format-ethernet":    "󰈀 eth",
+        "format-disconnected": "󰤭 offline",
+        "format-linked":      "󰈁 linked",
+        "tooltip": false,
+        "interval": 5
     },
 
     "custom/uptime": {
+        "exec": "~/.config/waybar/scripts/uptime.sh",
         "format": "󰔟 {}",
-        "exec": "uptime -p | sed 's/up //; s/ days/d/; s/ hours/h/; s/ minutes/m/'",
         "interval": 60,
-        "tooltip": false,
+        "tooltip": false
     },
 
-    "clock": {
-        "format": "󰥔 {:%H:%M}",
+    "wireplumber": {
+        "format": "󰕾 {volume}%",
+        "format-muted": "󰖁 muted",
         "tooltip": false,
+        "on-click": "",
+        "on-scroll-up": "",
+        "on-scroll-down": ""
     },
 
-    "clock#date": {
-        "format": "󰃭 {:%d/%m/%y}",
+    "backlight": {
+        "format": "󰃞 {percent}%",
         "tooltip": false,
-    },
-
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "󰈈",
-            "deactivated": "󰈉"
-        },
-        "tooltip": false,
+        "on-scroll-up": "",
+        "on-scroll-down": ""
     },
 
     "battery": {
         "states": {
-            "good": 95,
-            "warning": 30,
+            "warning":  30,
             "critical": 15
         },
         "format": "{icon} {capacity}%",
         "format-charging": "󰂄 {capacity}%",
-        "format-plugged": "󰚥 {capacity}%",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-plugged":  "󰚥 {capacity}%",
+        "format-icons":   ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip": false,
+        "interval": 30
     },
 
-    "network": {
-        "format-wifi": "󰖩 Connected",
-        "format-ethernet": "󰈀 Connected",
-        "format-linked": "(No IP)",
-        "format-disconnected": "󰖪 Disconnected",
-        "tooltip": false,
+    "clock#date": {
+        "format": "󰃭 {:%a %d %b}",
+        "tooltip": false
     },
 
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "󰂰 {volume}%",
-        "format-bluetooth-muted": "󰂲 {icon}",
-        "format-muted": "󰝟",
-        "format-icons": {
-            "headphone": "󰋋",
-            "hands-free": "󰥰",
-            "headset": "󰋎",
-            "phone": "󰏲",
-            "portable": "󰄝",
-            "car": "󰄋",
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
-        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
-        "tooltip": false,
+    "clock#time": {
+        "format": "󰥔 {:%H:%M}",
+        "tooltip": false
     },
 
-    "backlight": {
-        "format": "{icon} {percent}%",
-        "format-icons": ["󰃞", "󰃟", "󰃠"],
-        "on-scroll-up": "brightnessctl set +5%",
-        "on-scroll-down": "brightnessctl set 5%-",
-        "tooltip": false,
-    },
-
-    "custom/username": {
+    "custom/user": {
         "exec": "whoami",
         "format": " {}",
         "interval": "once",
-        "tooltip": false,
+        "tooltip": false
     }
 }

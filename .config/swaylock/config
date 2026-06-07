@@ -1,32 +1,41 @@
 hide-keyboard-layout
 indicator-caps-lock
 ignore-empty-password
-color=282828
 font=SauceCodePro Nerd Font
 font-size=30
 indicator-radius=100
 indicator-idle-visible
-inside-color=282828
-inside-clear-color=282828
-inside-caps-lock-color=282828
-inside-ver-color=282828
-inside-wrong-color=282828
-key-hl-color=fe8019
-caps-lock-key-hl-color=fe8019
-line-color=3c3836
-line-clear-color=3c3836
-line-caps-lock-color=3c3836
-line-ver-color=3c3836
-line-wrong-color=3c3836
-ring-color=665c54
-ring-clear-color=fabd2f
-ring-caps-lock-color=8ec07c
-ring-ver-color=b8bb26
-ring-wrong-color=fb4934
-separator-color=3c3836
-text-color=fbf1c7
-text-clear-color=fabd2f
-text-caps-lock-color=8ec07c
-text-ver-color=b8bb26
-text-wrong-color=fb4934
 
+# --- Base ---
+color=111111
+inside-color=111111
+line-color=1e1e1e
+ring-color=1e1e1e
+separator-color=1e1e1e
+text-color=555555
+key-hl-color=5a8a5a
+
+# --- Verifying ---
+inside-ver-color=111111
+line-ver-color=1e1e1e
+ring-ver-color=555555
+text-ver-color=555555
+
+# --- Cleared ---
+inside-clear-color=111111
+line-clear-color=1e1e1e
+ring-clear-color=555555
+text-clear-color=555555
+
+# --- Wrong ---
+inside-wrong-color=111111
+line-wrong-color=1e1e1e
+ring-wrong-color=9e4444
+text-wrong-color=9e4444
+
+# --- Caps lock ---
+inside-caps-lock-color=111111
+line-caps-lock-color=1e1e1e
+ring-caps-lock-color=9e7a35
+text-caps-lock-color=9e7a35
+caps-lock-key-hl-color=5a8a5a

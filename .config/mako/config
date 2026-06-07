@@ -1,20 +1,13 @@
-# --- General Style ---
 sort=-time
 layer=overlay
-#width=100
-#height=50
-border-size=3
+width=320
+height=100
+border-size=1
 border-radius=0
 icons=0
-#icon-path=
-#max-icon-size=64
-#icon-border-radius=
 actions=0
 markup=1
 history=1
-#format=
-#group-by=
-#output=
 default-timeout=5000
 ignore-timeout=0
 icon-location=left
@@ -25,32 +18,27 @@ anchor=top-right
 outer-margin=25
 margin=5
 
-# --- Binding ---
-# dismiss-group, invoke-default-action & exec <command>
 on-button-left=dismiss
 on-button-middle=dismiss
 on-button-right=dismiss
 
-# --- Colors & Font ---
-font=SauceCodePro Nerd Font 10
-background-color=#282828
+font=SauceCodePro Nerd Font 11
 
-# --- Urgency Levels ---
+background-color=#111111
+border-color=#1e1e1e
+text-color=#555555
 
 [urgency=low]
-border-color=#928374
-text-color=#928374
-progress-color=#928374
+border-color=#1e1e1e
+text-color=#555555
 default-timeout=5000
 
 [urgency=normal]
-text-color=#dfbf8e
-border-color=#d8a657
+border-color=#1e1e1e
+text-color=#c8c8c8
 default-timeout=5000
-progress-color=#d8a657
 
 [urgency=high]
-border-color=#ea6962
-text-color=#ea6962
-progress-color=#ea6962
-default-timeout=5000
+border-color=#9e4444
+text-color=#9e4444
+default-timeout=0

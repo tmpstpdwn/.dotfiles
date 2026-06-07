@@ -1,10 +1,11 @@
-#!/bin/bash 
+#!/bin/bash
 
-bemenu-run -l 20 -c -W 0.3 -B 2 -p "CMD:" -C -T -i \
-	-fn "SauceCodePro Nerd Font 12" \
-	--hb "#d65d0e" --hf "#fbf1c7" \
-	--bdr "#665c54" \
-	--ab "#282828" --af "#ebdbb2" \
-	--nb "#3c3836" --nf "#ebdbb2" \
-	--fb "#282828" --ff "#ebdbb2" \
-	--tb "#282828" --tf "#fbf1c7" \
+bemenu-run -l 20 -c -W 0.3 -B 1 -p "" -C -T -i \
+    -fn "SauceCodePro Nerd Font 12" \
+    --cb "#111111" --cf "#5a8a5a" \
+    --hb "#111111" --hf "#c8c8c8" \
+    --ab "#111111" --af "#555555" \
+    --nb "#111111" --nf "#555555" \
+    --fb "#111111" --ff "#5a8a5a" \
+    --tb "#111111" --tf "#fbf1c7" \
+    --bdr "#555555"
