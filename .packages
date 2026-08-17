@@ -27,6 +27,7 @@ foot
 gdb
 git
 grim
+helix
 htop
 jq
 libreoffice
@@ -34,8 +35,6 @@ libsanitizer-devel
 linux-firmware
 make
 mako
-neovide
-neovim
 nerd-fonts-ttf
 pfetch
 pipewire
