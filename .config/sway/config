@@ -15,14 +15,14 @@ focus_follows_mouse no
 font SauceCodePro Nerd Font Mono 9
 tiling_drag disabled
 title_align center
-
 output * scale 1.3
 
 ### Autostart
+
 exec $HOME/.config/sway/scripts/autostart.sh
-exec_always $HOME/.config/sway/scripts/randwal.sh
 
 ### Input configuration
+
 input type:touchpad {
    dwt enabled
    tap disabled
@@ -120,7 +120,7 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
-bindsym $mod+c focus parent
+bindsym $mod+c focus child
 
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad

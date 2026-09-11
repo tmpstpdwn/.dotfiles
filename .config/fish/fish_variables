@@ -5,3 +5,4 @@ SETUVAR MANPAGER:bat
 SETUVAR __fish_initialized:4300
 SETUVAR __fish_webconfig_theme_notification:set\x2dtheme\x2dv1\x2d\x236
 SETUVAR fish_greeting:\x1d
+SETUVAR fish_user_paths:/home/tmpstpdwn/\x2ecargo/bin

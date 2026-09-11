@@ -2,28 +2,36 @@
 
 # Start some services; Make sure they are terminated when sway exits.
 
-RED='\033[31m'
 GREEN='\033[32m'
+ORANGE='\033[38;5;208m'
+RED='\033[31m'
 RESET='\033[0m'
 
 SERVICES=(
-    "pipewire:pipewire"
+    "xwayland-satellite:xwayland-satellite"
     "waybar:waybar"
+    "randwal:$HOME/.config/sway/scripts/randwal.sh"
+    "gammastep:gammastep -O 3500"
+    "pipewire:pipewire"
     "battery_notify:$HOME/.config/sway/scripts/battery_notify.sh"
     "track_focus:$HOME/.config/sway/scripts/track_window_focus.sh"
     "swayidle:swayidle -w timeout 300 'swaylock -f'"
     "mako:mako"
-    "xwayland-satellite:xwayland-satellite"
 )
 
 pids=()
 
 # Start services.
 startup () {
+    mkdir -p $HOME/.cache
+    echo "" > "$HOME/.cache/autostart.log"
+
+    echo -ne "${ORANGE}Starting all autostart processes...${RESET}"
+
     for item in "${SERVICES[@]}"; do
         name="${item%%:*}"
         cmd="${item#*:}"
-        setsid bash -c "$cmd" >/dev/null 2>&1 &
+        setsid bash -c "$cmd" >>$HOME/.cache/autostart.log 2>&1 &
         pids+=($!)
     done
 
@@ -37,8 +45,10 @@ startup () {
         if ! kill -0 "$pid" 2>/dev/null; then
             wait "$pid"
             status=$?
-            echo -e "${RED}ERROR:${RESET} $name (PID $pid) failed during startup with exit code $status." >&2
-            failed=true
+            if [ "$status" -ne 0 ]; then
+                echo -e "\r${RED}Process $name (PID $pid) failed during startup with exit code $status.${RESET}" >&2
+                failed=true
+            fi
         fi
     done
 
@@ -46,7 +56,7 @@ startup () {
         exit 1
     fi
 
-    echo -e "${GREEN}SUCCESS:${RESET} All services started properly."
+    echo -e "\r${GREEN}All autostart processes started.          ${RESET}"
 }
 
 # Send a TERM or KILL signal to all running services.
@@ -63,12 +73,12 @@ stop_service() {
     done
 }
 
-# Stop services.
 cleanup() {
+    echo -ne "${ORANGE}Stopping all running autostart processes...${RESET}"
     stop_service TERM
     sleep 5
     stop_service KILL
-    echo -e "${GREEN}SUCCESS:${RESET} All running services stopped properly."
+    echo -e "\r${GREEN}All running autostart processes stopped.          ${RESET}"
     exit 0
 }
 
